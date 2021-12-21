@@ -45,7 +45,7 @@ public class BaseTest {
 	private static Properties config = new Properties();
 	private static FileInputStream fis;
 	private static Logger log = Logger.getLogger(BaseTest.class);
-	public static ExcelReader excel = new ExcelReader(".//src//test//resources//excel//testdata.xlsx");
+	public static ExcelReader excel = new ExcelReader(System.getProperty("user.dir")+"/src/test/resources/excel/testdata.xlsx");
 	public static MonitoringMail mail = new MonitoringMail();
 	public static WebDriverWait wait;
 	public static WebElement dropdown;
@@ -153,11 +153,11 @@ public class BaseTest {
 	@BeforeSuite
 	public void setUp() {
 		// loading the log file
-		PropertyConfigurator.configure("./src/test/resources/properties/log4j.properties");
+		PropertyConfigurator.configure(System.getProperty("user.dir")+"/src/test/resources/properties/log4j.properties");
 
 		// loading the OR and Config properties
 		try {
-			fis = new FileInputStream("./src/test/resources/properties/config.properties");
+			fis = new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/properties/config.properties");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -171,7 +171,7 @@ public class BaseTest {
 		}
 
 		try {
-			fis = new FileInputStream("./src/test/resources/properties/OR.properties");
+			fis = new FileInputStream(System.getProperty("user.dir")+"/src/test/resources/properties/OR.properties");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
